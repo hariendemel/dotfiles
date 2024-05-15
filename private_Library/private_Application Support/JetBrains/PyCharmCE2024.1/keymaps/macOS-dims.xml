@@ -1,0 +1,37 @@
+<keymap version="1" name="macOS-dims" parent="Mac OS X 10.5+">
+  <action id="ActivateTerminalToolWindow">
+    <keyboard-shortcut first-keystroke="shift meta 0" />
+  </action>
+  <action id="Compare.SameVersion">
+    <keyboard-shortcut first-keystroke="shift meta d" />
+  </action>
+  <action id="CompareTwoFiles" />
+  <action id="Diff.ShowStandaloneDiff">
+    <keyboard-shortcut first-keystroke="meta d" />
+  </action>
+  <action id="Git.Branches">
+    <keyboard-shortcut first-keystroke="ctrl meta b" />
+  </action>
+  <action id="Git.Pull">
+    <keyboard-shortcut first-keystroke="shift meta p" />
+  </action>
+  <action id="Git.Reset.In.Log">
+    <keyboard-shortcut first-keystroke="ctrl meta z" />
+  </action>
+  <action id="GitUpdateSelectedBranchAction">
+    <keyboard-shortcut first-keystroke="ctrl meta t" />
+  </action>
+  <action id="LocalHistory.ShowHistory">
+    <keyboard-shortcut first-keystroke="ctrl meta back_slash" />
+  </action>
+  <action id="Terminal.NewTab" />
+  <action id="Vcs.ShowTabbedFileHistory">
+    <keyboard-shortcut first-keystroke="shift meta back_slash" />
+  </action>
+  <action id="Vcs.UpdateProject">
+    <keyboard-shortcut first-keystroke="shift ctrl meta t" />
+  </action>
+  <action id="addQuickAction.Git.Diff">
+    <keyboard-shortcut first-keystroke="meta d" />
+  </action>
+</keymap>
