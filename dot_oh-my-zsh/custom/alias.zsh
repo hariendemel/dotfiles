@@ -1,5 +1,11 @@
 #custom aliases for ZSH
 
+#enable colorls
+if [ -x "$(command -v colorls)" ]; then
+    alias ls="colorls"
+    alias la="colorls -al"
+fi
+
 #DNS
 alias digs='dig +short'
 alias dns-clear='dscacheutil -flushcache & sudo killall -HUP mDNSResponder'
