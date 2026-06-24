@@ -15,11 +15,6 @@ chezmoi add <file>     # Add/update a file from ~ into this repo
 chezmoi edit <file>    # Edit a dotfile via chezmoi (uses the source path)
 ```
 
-macOS system settings are applied separately:
-```bash
-bash osx/settings.sh   # Requires sudo for some defaults
-```
-
 ## Chezmoi File Naming Conventions
 
 | Prefix | Effect |
@@ -45,3 +40,9 @@ This repo does **not** use chezmoi templates (`.tmpl` files).
 **iTerm2 (`dot_config/iterm/`)** — Full iTerm2 plist, installed to `~/.config/iterm/`. A run-once chezmoi script (`.chezmoiscripts/run_once_iterm-prefs.sh`) points iTerm2 at that folder automatically on `chezmoi apply`.
 
 **Private files (`private_Library/`)** — Syncs `~/Library/` content (currently JetBrains keymaps). The `private_` prefix sets restrictive permissions but does **not** encrypt on its own — encryption requires a chezmoi age/GPG key to be configured separately.
+
+## Run-once Scripts (`.chezmoiscripts/`)
+
+These execute automatically on `chezmoi apply` but only once (chezmoi tracks state):
+- `run_once_macos-settings.sh` — macOS system defaults (keyboard repeat, trackpad, autocorrect); requires sudo
+- `run_once_iterm-prefs.sh` — points iTerm2 at `~/.config/iterm/` for its preferences
