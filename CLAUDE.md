@@ -33,7 +33,7 @@ This repo does **not** use chezmoi templates (`.tmpl` files).
 - `alias-fb.zsh` — Forsyth Barr work aliases (AWS CodeArtifact auth via `py-auth`)
 - `alias-tf.zsh` — Terraform shorthand (`t`, `ti`, `tp`, `ta`, `tc`, etc.)
 
-**Git (`dot_gitconfig`, `src/fb/dot_gitconfig`)** — The global gitconfig conditionally includes `src/fb/dot_gitconfig` for repos under `~/src/fb/`, overriding the email to the work address. Edit `src/fb/dot_gitconfig` for work-specific git settings.
+**Git (`dot_gitconfig`, `dot_config/git/config-fb`)** — The global gitconfig conditionally includes `~/.config/git/config-fb` for repos under `~/src/fb/`, overriding the email to the work address. Edit `dot_config/git/config-fb` for work-specific git settings.
 
 **SSH (`dot_ssh/config`)** — SSH host entries; uses macOS Keychain (`UseKeychain yes`).
 

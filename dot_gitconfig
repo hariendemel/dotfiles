@@ -16,5 +16,5 @@
     autoStash = true
 
 [includeIf "gitdir:~/src/fb/"]
-    path = ~/src/fb/.gitconfig
+    path = ~/.config/git/config-fb
 
