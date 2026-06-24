@@ -1,0 +1,47 @@
+tap "domt4/autoupdate"
+
+# Shell
+brew "z"
+
+# Git & GitHub
+brew "git"
+brew "gh"
+
+# Cloud & IaC
+brew "awscli"
+brew "tfenv"
+brew "tflint"
+brew "yor"
+
+# Python
+brew "pyenv"
+brew "pyenv-virtualenv"
+brew "uv"
+
+# Node
+brew "node"
+brew "nvm"
+brew "yarn"
+
+# Containers
+brew "podman"
+
+# CI
+brew "act"
+brew "actionlint"
+
+# Utilities
+brew "jq"
+brew "yq"
+brew "nmap"
+brew "pandoc"
+brew "chezmoi"
+brew "openjdk"
+
+# Casks
+cask "1password-cli"
+cask "firefox"
+cask "iterm2"
+cask "rectangle"
+cask "zed"
+
