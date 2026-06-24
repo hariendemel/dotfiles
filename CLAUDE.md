@@ -41,8 +41,8 @@ This repo does **not** use chezmoi templates (`.tmpl` files).
 
 **Private files (`private_Library/`)** — Syncs `~/Library/` content (currently JetBrains keymaps). The `private_` prefix sets restrictive permissions but does **not** encrypt on its own — encryption requires a chezmoi age/GPG key to be configured separately.
 
-## Run-once Scripts (`.chezmoiscripts/`)
+## Auto Scripts (`.chezmoiscripts/`)
 
-These execute automatically on `chezmoi apply` but only once (chezmoi tracks state):
-- `run_once_macos-settings.sh` — macOS system defaults (keyboard repeat, trackpad, autocorrect); requires sudo
-- `run_once_iterm-prefs.sh` — points iTerm2 at `~/.config/iterm/` for its preferences
+These execute automatically on `chezmoi apply` and re-run whenever their content changes (`run_onchange_`):
+- `run_onchange_macos-settings.sh` — macOS system defaults (keyboard repeat, trackpad, autocorrect); requires sudo
+- `run_onchange_iterm-prefs.sh` — points iTerm2 at `~/.config/iterm/` for its preferences
