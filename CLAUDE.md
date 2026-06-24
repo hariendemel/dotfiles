@@ -42,6 +42,6 @@ This repo does **not** use chezmoi templates (`.tmpl` files).
 
 **SSH (`dot_ssh/config`)** — SSH host entries; uses macOS Keychain (`UseKeychain yes`).
 
-**iTerm2 (`config/iterm/`)** — Full iTerm2 plist; import via iTerm2 Preferences → Profiles.
+**iTerm2 (`dot_config/iterm/`)** — Full iTerm2 plist, installed to `~/.config/iterm/`. A run-once chezmoi script (`.chezmoiscripts/run_once_iterm-prefs.sh`) points iTerm2 at that folder automatically on `chezmoi apply`.
 
 **Private files (`private_Library/`)** — Syncs `~/Library/` content (currently JetBrains keymaps). The `private_` prefix sets restrictive permissions but does **not** encrypt on its own — encryption requires a chezmoi age/GPG key to be configured separately.
