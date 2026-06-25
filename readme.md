@@ -39,20 +39,3 @@ edit <repo-path>/Brewfile # add the line
 chezmoi apply             # runs homebrew with the Brewfile
 ```
 
-## Repo structure
-
-```
-Brewfile                          # Homebrew packages (deployed to ~/Brewfile)
-dot_gitconfig                     # Global git config
-dot_zshrc                         # Zsh config (oh-my-zsh, pyenv, nvm)
-dot_oh-my-zsh/custom/             # Shell aliases (general, Forsyth Barr, Terraform)
-dot_config/
-  git/config-fb                   # Work git config (email override for ~/src/fb/)
-  iterm/                          # iTerm2 preferences plist
-  zed/                            # Zed editor settings and keymap
-  gh/                             # GitHub CLI config
-private_Library/                  # ~/Library files (JetBrains keymaps)
-.chezmoiscripts/                  # Auto-run scripts on chezmoi apply
-```
-
-Files prefixed with `dot_` are installed with a leading `.` (e.g. `dot_zshrc` → `~/.zshrc`). Files prefixed with `private_` are installed with restricted permissions (chmod 600).
