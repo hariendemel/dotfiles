@@ -10,7 +10,6 @@ brew "gh"
 # Cloud & IaC
 brew "awscli"
 brew "tfenv"
-brew "tflint"
 brew "yor"
 
 # Python
