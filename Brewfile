@@ -35,16 +35,20 @@ brew "yq"
 brew "nmap"
 brew "pandoc"
 brew "chezmoi"
-brew "openjdk"
 brew "dockutil"
 
 # Fonts
 cask "font-meslo-lg-nerd-font"
 
-# Casks
-cask "1password-cli"
+# Apps
 cask "firefox"
 cask "iterm2"
 cask "rectangle"
 cask "zed"
+cask "bitwarden"
+
+# AI
+brew "opencode"
+cask "opencode-desktop"
+
 

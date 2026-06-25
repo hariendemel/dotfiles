@@ -35,9 +35,8 @@ After applying, restart your terminal for all shell changes to take effect.
 ## Adding a new Homebrew package
 
 ```bash
-brew install <package>
-chezmoi edit ~/Brewfile   # add the line
-chezmoi apply             # script re-runs automatically due to Brewfile hash change
+edit <repo-path>/Brewfile # add the line
+chezmoi apply             # runs homebrew with the Brewfile
 ```
 
 ## Repo structure
