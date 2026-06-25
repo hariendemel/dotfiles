@@ -38,6 +38,9 @@ brew "pandoc"
 brew "chezmoi"
 brew "openjdk"
 
+# Fonts
+cask "font-meslo-lg-nerd-font"
+
 # Casks
 cask "1password-cli"
 cask "firefox"
