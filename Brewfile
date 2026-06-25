@@ -45,6 +45,9 @@ cask "firefox"
 cask "iterm2"
 cask "rectangle"
 cask "zed"
+
+# Security
+cask "secretive"
 cask "bitwarden"
 
 # AI
