@@ -37,6 +37,7 @@ brew "nmap"
 brew "pandoc"
 brew "chezmoi"
 brew "openjdk"
+brew "dockutil"
 
 # Fonts
 cask "font-meslo-lg-nerd-font"

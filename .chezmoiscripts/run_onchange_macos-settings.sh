@@ -33,3 +33,15 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Flush preferences cache so settings apply without a full restart where possible
 killall cfprefsd 2>/dev/null || true
+
+# Dock: enable auto-hide
+defaults write com.apple.dock autohide -bool true
+
+# Dock: remove all default apps, keep only Mail, Reminders, Notes, Calendar
+dockutil --remove all --no-restart
+dockutil --add /System/Applications/Mail.app        --no-restart
+dockutil --add /System/Applications/Reminders.app  --no-restart
+dockutil --add /System/Applications/Notes.app       --no-restart
+dockutil --add /System/Applications/Calendar.app    --no-restart
+
+killall Dock
