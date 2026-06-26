@@ -31,5 +31,12 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
-# Flush preferences cache so settings apply without a full restart where possible
-killall cfprefsd 2>/dev/null || true
+# Enable dark mode
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+defaults delete NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically 2>/dev/null || true
+
+# Flush preferences cache and restart UI processes so the new defaults take effect
+# without a full logout. cfprefsd picks up the new values; Dock and SystemUIServer
+# re-render in dark mode. System Settings' Appearance UI may still show stale
+# state for ~30s after this.
+killall cfprefsd Dock SystemUIServer 2>/dev/null || true
