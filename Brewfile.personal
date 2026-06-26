@@ -1,0 +1,9 @@
+# Packages installed on personal machines only.
+
+# Security
+cask "bitwarden"
+
+# AI
+brew "opencode"
+cask "opencode-desktop"
+

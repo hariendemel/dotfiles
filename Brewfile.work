@@ -1,0 +1,22 @@
+# Packages installed on work machines only.
+
+# Utilities
+brew "pandoc"
+
+# Python
+brew "pyenv"
+brew "pyenv-virtualenv"
+brew "uv"
+
+# Node
+brew "node"
+brew "nvm"
+brew "yarn"
+
+# Containers
+brew "podman"
+
+# CI
+brew "act"
+brew "actionlint"
+

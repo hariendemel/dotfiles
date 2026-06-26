@@ -1,7 +1,35 @@
 #!/bin/bash
-# Brewfile SHA: {{ include "Brewfile" | sha256sum }}
+# Brewfile SHAs:
+# default:  {{ include "Brewfile" | sha256sum }}
+# personal: {{ include "Brewfile.personal" | sha256sum }}
+# work:     {{ include "Brewfile.work" | sha256sum }}
+
 if ! command -v brew &>/dev/null; then
   echo "error: Homebrew is not installed — install it first, then re-run chezmoi apply"
   exit 1
 fi
+
+# Default packages — run on every host
 brew bundle install --file "${CHEZMOI_SOURCE_DIR}/Brewfile"
+
+# Group-specific packages. Edit the case below to match your hostname patterns.
+HOST=$(hostname -s)
+case "$HOST" in
+  Harien*)
+    GROUP=work
+    ;;
+  DimBook*)
+    GROUP=personal
+    ;;
+  *)
+    echo "warning: hostname '$HOST' matches no group, defaulting to personal"
+    GROUP=personal
+    ;;
+esac
+
+GROUP_BREWFILE="${CHEZMOI_SOURCE_DIR}/Brewfile.${GROUP}"
+if [[ -f "$GROUP_BREWFILE" ]]; then
+  brew bundle install --file "$GROUP_BREWFILE"
+else
+  echo "note: $(basename "$GROUP_BREWFILE") not found, skipping group install"
+fi
