@@ -8,8 +8,9 @@ if [[ ! -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]]; then
   rm -rf /tmp/ohmyzsh-install
 fi
 
-# Install custom plugins and theme (skip if already cloned)
-ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+# Install custom plugins and theme (skip if already cloned).
+# Hardcoded because chezmoi manages $HOME/.oh-my-zsh/custom/ as the source of truth.
+ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
 _clone_if_missing() {
   [[ -d "$2/.git" ]] || git clone --depth=1 "$1" "$2"
