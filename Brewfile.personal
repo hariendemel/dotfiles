@@ -2,6 +2,10 @@
 
 # Security
 cask "bitwarden"
+brew "gnupg"
+brew "pinentry-mac"
+brew "pass"
+brew "ykman"
 
 # AI
 brew "opencode"
