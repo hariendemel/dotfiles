@@ -3,6 +3,7 @@ tap "domt4/autoupdate"
 
 # Shell
 brew "z"
+cask "ghostty"
 
 # Fonts
 cask "font-meslo-lg-nerd-font"
@@ -20,7 +21,6 @@ brew "dockutil"
 
 # Apps
 cask "firefox"
-cask "iterm2"
 cask "rectangle"
 cask "zed"
 
