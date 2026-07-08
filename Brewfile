@@ -12,6 +12,7 @@ brew "fzf"
 brew "lf"
 brew "zoxide"
 brew "ripgrep"
+brew "carapace"
 
 # Fonts
 cask "font-meslo-lg-nerd-font"

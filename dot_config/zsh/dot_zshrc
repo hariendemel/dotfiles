@@ -26,6 +26,7 @@ autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
+source <(carapace _carapace zsh)
 
 # --- fuzzy finder ---
 if [[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]]; then
@@ -40,3 +41,4 @@ done
 source "$ZDOTDIR/fzf.zsh"
 source "$ZDOTDIR/plugin.zsh"
 source "$ZDOTDIR/prompt.zsh"
+
