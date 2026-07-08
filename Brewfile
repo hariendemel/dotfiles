@@ -10,6 +10,7 @@ brew "bat"
 brew "fd"
 brew "fzf"
 brew "lf"
+brew "zoxide"
 brew "ripgrep"
 
 # Fonts

@@ -19,6 +19,8 @@ setopt NUMERIC_GLOB_SORT
 LF_ICONS=$(cat ~/.config/lf/icons | tr '\n' ':')
 export LF_ICONS
 
+eval "$(zoxide init zsh)"
+
 # --- completion system ---
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
