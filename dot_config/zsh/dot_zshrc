@@ -38,4 +38,5 @@ for f in $ZDOTDIR/alias/alias*.zsh; do
   [[ -f $f ]] && source "$f"
 done
 source "$ZDOTDIR/fzf.zsh"
+source "$ZDOTDIR/plugin.zsh"
 source "$ZDOTDIR/prompt.zsh"
