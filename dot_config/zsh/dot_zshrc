@@ -41,4 +41,5 @@ done
 source "$ZDOTDIR/fzf.zsh"
 source "$ZDOTDIR/plugin.zsh"
 source "$ZDOTDIR/prompt.zsh"
+source "$ZDOTDIR/git.zsh"
 
