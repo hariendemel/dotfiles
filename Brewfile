@@ -2,8 +2,8 @@
 tap "domt4/autoupdate"
 
 # Shell
-brew "z"
 cask "ghostty"
+brew "starship"
 
 # Fonts
 cask "font-meslo-lg-nerd-font"

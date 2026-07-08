@@ -19,3 +19,4 @@ setopt NUMERIC_GLOB_SORT
 for f in $ZDOTDIR/alias/alias*.zsh; do
   [[ -f $f ]] && source "$f"
 done
+source "$ZDOTDIR/prompt.zsh"
