@@ -1,3 +1,17 @@
+# --- ls ---
+alias ls='eza --icons'
+alias ll='eza -lh --icons --git'
+alias la='eza -lah --icons --git'
+alias tree='eza --tree --icons'
+compdef eza=ls
+
+# --- tool override ---
+alias cat='bat'
+alias grep='rg --color=auto'
+alias diff='diff --color=auto'
+alias df='df -h'
+alias vim='nvim'
+
 # --- chezmoi ---
 alias ch="chezmoi"
 alias cha="ch apply"

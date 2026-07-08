@@ -4,6 +4,10 @@ tap "domt4/autoupdate"
 # Shell
 cask "ghostty"
 brew "starship"
+brew "neovim"
+brew "eza"
+brew "bat"
+brew "ripgrep"
 
 # Fonts
 cask "font-meslo-lg-nerd-font"
