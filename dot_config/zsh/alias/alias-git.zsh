@@ -1,0 +1,39 @@
+# --- Git ---
+alias g='git'
+alias ga='git add'
+alias gaa='git add --all'
+alias gapa='git add --patch'
+alias gau='git add --update'
+alias gav='git add --verbose'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"'
+alias gam='git am'
+alias gama='git am --abort'
+alias gamc='git am --continue'
+alias gamscp='git am --show-current-patch'
+alias gams='git am --skip'
+alias gap='git apply'
+alias gapt='git apply --3way'
+alias gbs='git bisect'
+alias gbsb='git bisect bad'
+alias gbsg='git bisect good'
+alias gbsn='git bisect new'
+alias gbso='git bisect old'
+alias gbsr='git bisect reset'
+alias gbss='git bisect start'
+alias gbl='git blame -w'
+alias gb='git branch'
+alias gba='git branch --all'
+alias gbd='git branch --delete'
+alias gbD='git branch --delete --force'
+alias gcam="git commit --all --message"
+alias gcmsg="git commit --message"
+alias gcr="gco --track"
+alias gcob="gco -b"
+alias gd='git diff'
+alias gls="git log --pretty='%Cred%h%Creset | %C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)[%an]%Creset'"
+alias gp='git push'
+alias gpd='git push --dry-run'
+alias gpf='git push --force-with-lease --force-if-includes'
+alias grguo="gr get-url origin"
+alias gst='git status'
+

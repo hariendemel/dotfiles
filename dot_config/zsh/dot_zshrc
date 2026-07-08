@@ -15,3 +15,7 @@ setopt AUTOCD
 setopt NOBEEP
 setopt NUMERIC_GLOB_SORT 
 
+# --- modular config ---
+for f in $ZDOTDIR/alias/alias*.zsh; do
+  [[ -f $f ]] && source "$f"
+done
