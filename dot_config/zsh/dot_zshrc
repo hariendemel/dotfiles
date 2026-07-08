@@ -15,6 +15,7 @@ setopt AUTOCD
 setopt NOBEEP
 setopt NUMERIC_GLOB_SORT 
 
+# --- smart navigation ---
 LF_ICONS=$(cat ~/.config/lf/icons | tr '\n' ':')
 export LF_ICONS
 
@@ -24,8 +25,15 @@ compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
 
+# --- fuzzy finder ---
+if [[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]]; then
+  source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+  source /opt/homebrew/opt/fzf/shell/completion.zsh
+fi
+
 # --- modular config ---
 for f in $ZDOTDIR/alias/alias*.zsh; do
   [[ -f $f ]] && source "$f"
 done
+source "$ZDOTDIR/fzf.zsh"
 source "$ZDOTDIR/prompt.zsh"

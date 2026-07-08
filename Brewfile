@@ -7,6 +7,8 @@ brew "starship"
 brew "neovim"
 brew "eza"
 brew "bat"
+brew "fd"
+brew "fzf"
 brew "lf"
 brew "ripgrep"
 
