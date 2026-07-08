@@ -19,7 +19,8 @@ cask "font-meslo-lg-nerd-font"
 
 # Git & GitHub
 brew "git"
-brew "gh"
+brew "lazygit"
+brew "gh" 
 
 # Utilities
 brew "jq"
