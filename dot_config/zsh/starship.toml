@@ -4,7 +4,7 @@ add_newline = false
 
 format = "$os$directory$git_branch$git_status$character"
 
-right_format = """$all"""
+right_format = """$aws"""
 
 palette = "catppuccin_mocha"
 
@@ -44,6 +44,15 @@ conflicted = "[⚡$count ](red)"
 success_symbol = "[❯](mauve)"
 error_symbol   = "[❯](red)"
 vimcmd_symbol  = "[❮](sky)"
+
+[aws]
+format = '[$symbol($profile )(\[$region\] )]($style)'
+style = 'blue'
+symbol = ' '
+
+[aws.region_aliases]
+ap-southeast-2 = 'au'
+us-east-1 = 'va'
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

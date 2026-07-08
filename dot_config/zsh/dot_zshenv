@@ -10,3 +10,5 @@ export PATH="$HOME/.local/bin:$PATH"
 # --- Secretive for SSH keys ---
 export SSH_AUTH_SOCK=~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
+
+alias assume=". assume"

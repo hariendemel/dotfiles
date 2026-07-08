@@ -30,5 +30,6 @@ cask "yubico-authenticator"
 
 # Cloud & IaC
 brew "awscli"
+brew "granted"
 brew "tfenv"
 
