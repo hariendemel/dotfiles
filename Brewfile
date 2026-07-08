@@ -7,6 +7,7 @@ brew "starship"
 brew "neovim"
 brew "eza"
 brew "bat"
+brew "lf"
 brew "ripgrep"
 
 # Fonts
