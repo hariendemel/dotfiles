@@ -1,3 +1,3 @@
-require("config.setting")
+require("config.options")
 require("config.lazy")
 
