@@ -22,6 +22,7 @@ export LF_ICONS
 eval "$(zoxide init zsh)"
 
 # --- completion system ---
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 zstyle ':completion:*' menu select
