@@ -11,5 +11,9 @@ return {
 
   config = function()
     vim.keymap.set("n", "<C-1>", "<Cmd>Neotree<CR>")
+
+    require("neo-tree").setup({
+      close_if_last_window = true,
+    })
   end
 }

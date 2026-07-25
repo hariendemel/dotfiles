@@ -11,7 +11,7 @@ alias cat='bat'
 alias grep='rg --color=auto'
 alias diff='diff --color=auto'
 alias df='df -h'
-alias vim='nvim'
+alias nv='nvim'
 
 lf() { # zsh follow lf navigation
     tmp=$(mktemp)
