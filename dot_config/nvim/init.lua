@@ -6,6 +6,7 @@ require("config.functions")
 require("config.autocmd")
 
 require("plugin.language")
+require("plugin.lsp")
 require("plugin.git")
 
 require("plugin.ui-main")
