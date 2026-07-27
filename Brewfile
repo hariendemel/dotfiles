@@ -13,6 +13,7 @@ brew "lf"
 brew "zoxide"
 brew "ripgrep"
 brew "carapace"
+brew "tree-sitter-cli"
 
 # Fonts
 cask "font-meslo-lg-nerd-font"
