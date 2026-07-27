@@ -8,3 +8,5 @@ require("config.autocmd")
 require("plugin.language")
 require("plugin.ui-main")
 require("plugin.ui-selector")
+require("plugin.editor")
+
