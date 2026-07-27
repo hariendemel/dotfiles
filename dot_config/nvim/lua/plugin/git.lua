@@ -1,12 +1,9 @@
 vim.pack.add {
-  "https://github.com/NeogitOrg/neogit",
+  "https://github.com/kdheepak/lazygit.nvim",
   "https://github.com/nvim-mini/mini.nvim",
 }
 
-local neogit = require("neogit")
-neogit.setup()
-
-vim.keymap.set("n", "<leader>gg", neogit.open, { desc = "Show Neogit UI" })
+vim.keymap.set("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Show Neogit UI" })
 
 local miniDiff = require("mini.diff")
 miniDiff.setup({
