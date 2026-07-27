@@ -5,3 +5,4 @@ require("config.keymap")
 require("config.functions")
 require("config.autocmd")
 
+require("plugin.ui-main")
