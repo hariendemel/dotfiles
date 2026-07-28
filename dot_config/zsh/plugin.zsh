@@ -21,4 +21,3 @@ zplugin-update() {
 
 _zplugin_load zsh-users zsh-autosuggestions
 _zplugin_load zsh-users zsh-history-substring-search
-_zplugin_load Aloxaf fzf-tab

@@ -35,17 +35,6 @@ if [[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]]; then
   source /opt/homebrew/opt/fzf/shell/completion.zsh
 fi
 
-# --- fzf-tab: replace default completion menu with fzf popup ---
-# fzf-tab must be sourced AFTER compinit (handled by plugin.zsh below)
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview 'git log --oneline --graph --color $word 2>/dev/null'
-zstyle ':fzf-tab:complete:git-log:*' fzf-preview 'git show --color $word 2>/dev/null'
-zstyle ':fzf-tab:complete:kill:*' fzf-preview 'ps -p $word -o pid,comm 2>/dev/null'
-zstyle ':fzf-tab:complete:**' fzf-preview 'bat --color=always --style=plain,numbers --line-range=:500 $realpath 2>/dev/null || ls --color $realpath 2>/dev/null || echo $word'
-zstyle ':fzf-tab:complete:**' popup-min-size 30
-zstyle ':fzf-tab:*' fzf-flags --height=60% --layout=reverse --border=rounded
-zstyle ':fzf-tab:*' switch-group '<' '>'
-
 # --- modular config ---
 for f in $ZDOTDIR/alias/alias*.zsh; do
   [[ -f $f ]] && source "$f"
