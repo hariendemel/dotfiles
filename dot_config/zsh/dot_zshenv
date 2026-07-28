@@ -15,6 +15,10 @@ elif command -v batcat >/dev/null 2>&1; then
   export MANPAGER="batcat -l man -p"
 fi
 
+# raw ANSI colour, no -X: prevents git's default LESS=FRX from leaving
+# paged output stuck on screen after quitting less
+export LESS="-R"
+
 # --- personal binaries/scripts ---
 export PATH="$HOME/.local/bin:$PATH"
 
