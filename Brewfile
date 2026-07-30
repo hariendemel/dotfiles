@@ -2,9 +2,7 @@
 tap "domt4/autoupdate"
 
 # Shell
-cask "ghostty"
 brew "starship"
-brew "neovim"
 brew "eza"
 brew "bat"
 brew "fd"
@@ -13,7 +11,6 @@ brew "lf"
 brew "zoxide"
 brew "ripgrep"
 brew "carapace"
-brew "tree-sitter-cli"
 
 # Fonts
 cask "font-meslo-lg-nerd-font"
@@ -30,7 +27,12 @@ brew "yq"
 brew "nmap"
 brew "chezmoi"
 brew "dockutil"
+brew "tree-sitter-cli"
 
+# Terminal
+cask "ghostty"
+cask "kitty"
+brew "neovim"
 # Apps
 cask "firefox"
 cask "rectangle"
