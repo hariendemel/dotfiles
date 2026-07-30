@@ -1,6 +1,8 @@
 vim.cmd.colorscheme("catppuccin")
 
 vim.g.netrw_banner = 0
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -35,4 +37,3 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.opt.clipboard:append("unnamedplus")
-
