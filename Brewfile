@@ -33,6 +33,8 @@ brew "tree-sitter-cli"
 cask "ghostty"
 cask "kitty"
 brew "neovim"
+brew "herdr"
+
 # Apps
 cask "firefox"
 cask "rectangle"

@@ -1,0 +1,26 @@
+onboarding = false
+
+[theme]
+name = "catppuccin"
+
+[ui.toast.herdr]
+position = "top-right"
+
+[keys]
+new_tab = "prefix+t"
+
+[[keys.command]]
+key = "prefix+/"
+type = "popup"
+command = "lazygit"
+description = "run lazygit"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+>"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "open scratch terminal"
+width = "60%"
+height = "60%"
