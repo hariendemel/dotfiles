@@ -10,39 +10,49 @@ Personal dotfiles managed by [chezmoi](https://www.chezmoi.io/). Changes here ar
 
 ```bash
 chezmoi apply          # Apply changes from this repo to the home directory
-chezmoi diff           # Preview what chezmoi apply would change
-chezmoi add <file>     # Add/update a file from ~ into this repo
-chezmoi edit <file>    # Edit a dotfile via chezmoi (uses the source path)
+chezmoi diff            # Preview what chezmoi apply would change
+chezmoi add <file>      # Add/update a file from ~ into this repo
+chezmoi edit <file>     # Edit a dotfile via chezmoi (uses the source path)
+chezmoi execute-template < file.tmpl   # Render a template to check it parses correctly
 ```
 
 ## Chezmoi File Naming Conventions
 
-| Prefix | Effect |
+| Prefix/Suffix | Effect |
 |--------|--------|
 | `dot_` | Installed with a leading `.` (e.g. `dot_zshrc` → `~/.zshrc`) |
 | `private_` | File permissions set to 0600; for sensitive files like `~/Library/` |
+| `.tmpl` | Go template, rendered before being applied |
 
-This repo does **not** use chezmoi templates (`.tmpl` files).
+Templates are used sparingly — only in `.chezmoiscripts/` to embed a SHA256 of a companion data file in a comment, so the script re-runs whenever that file's content changes (e.g. `run_onchange_brew-bundle.sh.tmpl`, `run_onchange_extra-commands.sh.tmpl`). Regular dotfiles are not templated.
+
+`readme.md`, `CLAUDE.md`, and all `Brewfile*` files are listed in `.chezmoiignore` — they're source-only documentation/data, not applied to `~`.
 
 ## Architecture / Structure
 
-**Shell (`dot_zshrc`, `dot_p10k.zsh`)** — Zsh with Oh My Zsh and Powerlevel10k. NVM and pyenv are initialised here.
+**Shell (`dot_config/zsh/`)** — Zsh, no framework (no Oh My Zsh/Powerlevel10k). `ZDOTDIR` is set to `~/.config/zsh` by a run-once script since macOS reads `/etc/zshenv` before `~/.zshenv`. Starship provides the prompt (`starship.toml`, sourced via `prompt.zsh`). A minimal custom plugin manager (`plugin.zsh`) shallow-clones `zsh-users` plugins on demand into `zsh/plugin/`. Aliases live under `alias/alias*.zsh` and are auto-sourced by `dot_zshrc`.
 
-**Oh My Zsh customisations (`dot_oh-my-zsh/custom/`)** — All alias/function files are sourced automatically by Oh My Zsh:
-- `alias.zsh` — General aliases (`colorls`, DNS helpers, git shortcuts)
-- `alias-fb.zsh` — Forsyth Barr work aliases (AWS CodeArtifact auth via `py-auth`)
-- `alias-tf.zsh` — Terraform shorthand (`t`, `ti`, `tp`, `ta`, `tc`, etc.)
+**Git (`dot_gitconfig`, `dot_config/git/`)** — Global gitconfig uses `delta` as pager (catppuccin-mocha theme via `config-catppuccin-delta`) and rebase-by-default pulls. Conditionally includes `config-fb` (overrides user email) for repos under `~/src/fb/`.
 
-**Git (`dot_gitconfig`, `dot_config/git/config-fb`)** — The global gitconfig conditionally includes `~/.config/git/config-fb` for repos under `~/src/fb/`, overriding the email to the work address. Edit `dot_config/git/config-fb` for work-specific git settings.
+**Terminal emulators (`dot_config/kitty/`, `dot_config/ghostty/`)** — Catppuccin-mocha themed; kitty has a custom keymap for `herdr` integration.
+
+**Editors (`dot_config/nvim/`, `dot_config/zed/`)** — Neovim uses the native `vim.pack.add` package manager (no plugin-manager plugin), split into `lua/config/` (options/keymaps/autocmds/functions) and `lua/plugin/` (per-plugin setup: LSP, treesitter, git, session, UI). Zed has `private_settings.json` (user-specific, hence `private_`) and `keymap.json`.
+
+**Other tools** — `lazygit` (diff rendering config), `lf` (file manager: colors/icons/lfrc), `herdr` (`config.toml`), `gh` (`private_config.yml` for the `gh` CLI's own config, not extensions — see below).
 
 **SSH (`dot_ssh/config`)** — SSH host entries; uses macOS Keychain (`UseKeychain yes`).
 
-**iTerm2 (`dot_config/iterm/`)** — Full iTerm2 plist, installed to `~/.config/iterm/`. A run-once chezmoi script (`.chezmoiscripts/run_once_iterm-prefs.sh`) points iTerm2 at that folder automatically on `chezmoi apply`.
+**Private files (`private_Library/`)** — Syncs a subset of `~/Library/` (currently JetBrains PyCharm keymaps). `private_` sets restrictive permissions, not encryption — encryption requires a separately-configured chezmoi age/GPG key.
 
-**Private files (`private_Library/`)** — Syncs `~/Library/` content (currently JetBrains keymaps). The `private_` prefix sets restrictive permissions but does **not** encrypt on its own — encryption requires a chezmoi age/GPG key to be configured separately.
+**Package management (`Brewfile`, `Brewfile.personal`, `Brewfile.work`)** — Declarative Homebrew packages. Applied by `run_onchange_brew-bundle.sh.tmpl`: an always-installed default set, plus a machine-group set (`work`/`personal`) selected by hostname pattern.
+
+**One-off setup commands (`extra-commands.txt`)** — Generic manifest of arbitrary shell commands, one per line (`#`-prefixed and blank lines skipped) — e.g. `gh extension install dlvhdr/gh-dash`. Applied by `run_onchange_extra-commands.sh.tmpl`, which re-runs whenever the manifest changes and tolerates per-line failures (`|| true`), so re-running an already-applied command (e.g. "extension already installed") doesn't break `chezmoi apply`. Use this for anything that doesn't fit Homebrew (gh/npm/pipx installs, etc.); if something needs real per-manager idempotency logic rather than "ignore failure," give it its own `run_once_`/`run_onchange_` script instead.
 
 ## Auto Scripts (`.chezmoiscripts/`)
 
-These execute automatically on `chezmoi apply` and re-run whenever their content changes (`run_onchange_`):
-- `run_onchange_macos-settings.sh` — macOS system defaults (keyboard repeat, trackpad, autocorrect); requires sudo
-- `run_onchange_iterm-prefs.sh` — points iTerm2 at `~/.config/iterm/` for its preferences
+Execute automatically on `chezmoi apply`:
+- `run_once_setup-dock.sh` — configures the macOS Dock (autohide, trimmed default apps); once per machine
+- `run_once_zsh-zdotdir.sh` — points `ZDOTDIR` at `~/.config/zsh` via `/etc/zshenv`; idempotent, requires sudo, once per machine
+- `run_onchange_brew-bundle.sh.tmpl` — installs Homebrew packages from the Brewfiles; re-runs when any Brewfile changes
+- `run_onchange_extra-commands.sh.tmpl` — replays one-off shell commands from `extra-commands.txt`; re-runs when that file changes
+- `run_onchange_macos-settings.sh` — macOS system defaults (keyboard repeat, trackpad, autocorrect, dark mode); requires sudo

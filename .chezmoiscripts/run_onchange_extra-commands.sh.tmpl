@@ -1,0 +1,11 @@
+#!/bin/bash
+# extra-commands.txt SHA: {{ include "extra-commands.txt" | sha256sum }}
+
+set -uo pipefail
+
+MANIFEST="${CHEZMOI_SOURCE_DIR}/extra-commands.txt"
+
+while IFS= read -r line || [[ -n "$line" ]]; do
+  [[ -z "$line" || "$line" == \#* ]] && continue
+  eval "$line" || true
+done < "$MANIFEST"

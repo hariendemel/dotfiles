@@ -14,9 +14,10 @@ chezmoi init --apply git@github.com:hariendemel/dotfiles.git
 ```
 
 `chezmoi apply` will automatically:
-- Install all Homebrew packages from `Brewfile`
-- Apply macOS system settings (keyboard, trackpad, autocorrect)
-- Configure iTerm2 to load preferences from `~/.config/iterm/`
+- Install all Homebrew packages from `Brewfile` (plus a `personal`/`work` group file based on hostname)
+- Run any one-off setup commands listed in `extra-commands.txt` (e.g. installing `gh` CLI extensions)
+- Apply macOS system settings (keyboard, trackpad, autocorrect, dark mode)
+- Point `ZDOTDIR` at `~/.config/zsh` and configure the Dock
 
 After applying, restart your terminal for all shell changes to take effect.
 
@@ -37,5 +38,14 @@ After applying, restart your terminal for all shell changes to take effect.
 ```bash
 edit <repo-path>/Brewfile # add the line
 chezmoi apply             # runs homebrew with the Brewfile
+```
+
+## Adding a one-off setup command
+
+For anything that doesn't fit Homebrew (e.g. `gh` CLI extensions, `npm`/`pipx` global installs):
+
+```bash
+edit <repo-path>/extra-commands.txt  # add a line, e.g. `gh extension install dlvhdr/gh-dash`
+chezmoi apply                        # runs it once; safe to re-run — failures on already-applied commands are ignored
 ```
 
