@@ -2,3 +2,4 @@
 # has changed. Failures are ignored (e.g. "already installed") so re-running
 # is always safe — each line should be a one-off setup command, not something
 # that needs real idempotency logic.
+gh extension install dlvhdr/gh-dash

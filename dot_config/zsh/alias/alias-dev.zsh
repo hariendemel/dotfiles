@@ -20,3 +20,6 @@ alias oc="opencode"
 alias ocsl="oc session list"
 alias ocso="oc -s"
 
+# --- gh-dash ---
+alias ghd="~/.config/gh-dash/build-config.sh && gh dash"
+
