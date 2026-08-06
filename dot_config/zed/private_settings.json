@@ -9,8 +9,8 @@
 {
   "autosave": "on_focus_change",
   "terminal": {
-    "dock": "bottom",
-    "font_family": "MesloLGS NF"
+    "dock": "right",
+    "font_family": "JetBrainsMono Nerd Font Mono"
   },
   "project_panel": {
     "dock": "left"

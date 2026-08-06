@@ -14,6 +14,7 @@ brew "carapace"
 
 # Fonts
 cask "font-meslo-lg-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 
 # Git & GitHub
 brew "git"
