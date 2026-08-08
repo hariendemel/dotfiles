@@ -40,6 +40,13 @@ keybindings:
       name: Review in herdr
       command: >-
         herdr tab create --label "PR-{{.PrNumber}}" --cwd "{{.RepoPath}}"
+    - key: ">"
+      name: Workflows
+      command: >-
+        herdr pane run 
+        $(herdr tab create --label 'Wfl-{{.PrNumber}}' | 
+        jq -r '.result.root_pane.pane_id')
+        "gh enhance -R {{.RepoName}} {{.PrNumber}}"
 pager:
   diff: "diffnav"
 confirmQuit: false
