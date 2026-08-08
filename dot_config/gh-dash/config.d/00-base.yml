@@ -41,7 +41,7 @@ keybindings:
       command: >-
         herdr tab create --label "PR-{{.PrNumber}}" --cwd "{{.RepoPath}}"
 pager:
-  diff: "delta --side-by-side --paging=always"
+  diff: "diffnav"
 confirmQuit: false
 showAuthorIcons: true
 smartFilteringAtLaunch: true

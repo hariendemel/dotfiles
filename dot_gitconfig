@@ -8,10 +8,13 @@
 [core]
     autocrlf = input
     excludesfile = /Users/harien/.gitignore
-    pager = delta
+    pager = diffnav
 
 [interactive]
     diffFilter = delta --color-only
+
+[pager]
+	blame = delta
 
 [delta]
     navigate = true
@@ -30,4 +33,5 @@
 
 [includeIf "gitdir:~/src/fb/"]
     path = ~/.config/git/config-fb
+
 

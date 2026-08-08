@@ -19,6 +19,7 @@ cask "font-jetbrains-mono-nerd-font"
 # Git & GitHub
 brew "git"
 brew "git-delta"
+brew "diffnav"
 brew "lazygit"
 brew "gh"
 
