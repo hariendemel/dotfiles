@@ -17,6 +17,14 @@ capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completi
 
 vim.lsp.config("*", { capabilities = capabilities })
 
+  desc = "LSP format on save",
+  callback = function(args)
+    if vim.lsp.buf.format_supported and vim.lsp.buf.format_supported(args.buf) then
+      vim.lsp.buf.format({ bufnr = args.buf })
+    end
+  end,
+})
+
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
