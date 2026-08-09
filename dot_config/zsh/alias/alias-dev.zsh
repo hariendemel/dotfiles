@@ -23,3 +23,5 @@ alias ocso="oc -s"
 # --- gh-dash ---
 alias ghd="~/.config/gh-dash/build-config.sh && gh dash"
 
+# --- git worktree ---
+alias wrcb="wt remove $git_current_branch"

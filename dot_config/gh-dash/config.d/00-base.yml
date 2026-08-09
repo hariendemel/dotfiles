@@ -37,14 +37,17 @@ repo:
 keybindings:
   prs:
     - key: /
-      name: Review in herdr
+      name: Review
       command: >-
-        herdr tab create --label "PR-{{.PrNumber}}" --cwd "{{.RepoPath}}"
+        herdr pane run 
+        $(herdr tab create --label 'PR-{{.PrNumber}}' --cwd "{{.RepoPath}}" --focus | 
+        jq -r '.result.root_pane.pane_id')
+        "wt switch pr:{{.PrNumber}}"
     - key: ">"
       name: Workflows
       command: >-
         herdr pane run 
-        $(herdr tab create --label 'Wfl-{{.PrNumber}}' | 
+        $(herdr tab create --label 'Wfl-{{.PrNumber}}' --focus | 
         jq -r '.result.root_pane.pane_id')
         "ENHANCE_THEME=catppuccin_mocha gh enhance -R {{.RepoName}} {{.PrNumber}}"
 pager:

@@ -21,6 +21,7 @@ brew "git"
 brew "git-delta"
 brew "diffnav"
 brew "lazygit"
+brew "worktrunk"
 brew "gh"
 
 # Utilities
