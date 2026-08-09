@@ -6,10 +6,6 @@ vim.pack.add {
 
 require("mason").setup()
 
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format Local buffer" })
-vim.keymap.set("n", "df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-
 vim.diagnostic.config({ virtual_text = true })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -17,6 +13,26 @@ capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completi
 
 vim.lsp.config("*", { capabilities = capabilities })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
+  callback = function(args)
+    local bufnr = args.buf
+    local map = function(lhs, rhs, desc)
+      vim.keymap.set("n", lhs, rhs, { buffer = bufnr, desc = desc })
+    end
+    map("gd", vim.lsp.buf.definition, "Go to definition")
+    map("K", vim.lsp.buf.hover, "Hover documentation")
+    map("gr", vim.lsp.buf.references, "References")
+    map("gri", vim.lsp.buf.implementation, "Implementation")
+    map("gra", vim.lsp.buf.code_action, "Code action")
+    map("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+    map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+    map("<leader>f", vim.lsp.buf.format, "Format buffer")
+    map("df", vim.diagnostic.open_float, "Show line diagnostics")
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
   desc = "LSP format on save",
   callback = function(args)
     if vim.lsp.buf.format_supported and vim.lsp.buf.format_supported(args.buf) then
