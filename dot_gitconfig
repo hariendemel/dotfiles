@@ -8,13 +8,13 @@
 [core]
     autocrlf = input
     excludesfile = /Users/harien/.gitignore
-    pager = diffnav
 
 [interactive]
     diffFilter = delta --color-only
 
 [pager]
-	blame = delta
+    blame = delta
+    diff = diffnav
 
 [delta]
     navigate = true
