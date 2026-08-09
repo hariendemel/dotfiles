@@ -1,4 +1,4 @@
-vim.pack.add { 
+vim.pack.add {
   'https://github.com/nvim-treesitter/nvim-treesitter',
 }
 
@@ -15,22 +15,29 @@ local ensure_installed = {
 treesitter.install(ensure_installed)
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "*",
-	callback = function(args)
-		local buf = args.buf
-		local ft = vim.bo[buf].filetype
+  pattern = "*",
+  callback = function(args)
+    local buf = args.buf
+    if pcall(vim.treesitter.get_parser, buf) then
+      return
+    end
 
-		local lang = vim.treesitter.language.get_lang(ft)
-		if not lang then
-			return
-		end
+    local ft = vim.bo[buf].filetype
 
-		local ok_add = pcall(vim.treesitter.language.add, lang)
-		if not ok_add then
-			return
-		end
+    local lang = vim.treesitter.language.get_lang(ft)
+    if not lang then
+      return
+    end
 
-		pcall(vim.treesitter.start, buf, lang)
-	end,
+    local ok_add = pcall(vim.treesitter.language.add, lang)
+    if not ok_add then
+      return
+    end
+
+    pcall(vim.treesitter.start, buf, lang)
+  end,
 })
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
