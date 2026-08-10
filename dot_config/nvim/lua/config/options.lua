@@ -51,3 +51,4 @@ vim.opt.showmatch = true
 vim.opt.cmdheight = 1
 vim.opt.pumheight = 10
 vim.opt.concealcursor = ""
+vim.opt.winborder = "rounded"

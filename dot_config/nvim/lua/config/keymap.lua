@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" })
+vim.keymap.set("n", "<leader>w", ":write<CR>", { desc = "Reload config)" })
 
+vim.keymap.set("x", "p", [["_dP]], { desc = "Paste over selection without losing yanked text" })
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yanking" })
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -32,5 +33,5 @@ vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" }
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
 
-vim.keymap.set("n", "<leader>re", "<cmd>restart<cr>", { desc = "Restart config :restart)" })
+vim.keymap.set("n", "<leader>re", ":update<CR> :restart<CR>", { desc = "Reload config)" })
 

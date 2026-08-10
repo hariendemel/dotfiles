@@ -16,6 +16,7 @@ vim.keymap.set("n", "<leader>td", function()
 end, { desc = "Toggle diagnostics" })
 
 vim.keymap.set("n", "<leader>cha", function()
+  vim.cmd(':w')
   local path = vim.fn.expand("%:p")
   vim.system({ "chezmoi", "add", path }, { text = true }, function(res)
     if res.code == 0 then
