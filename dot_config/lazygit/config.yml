@@ -1,6 +1,17 @@
 git:
   diffRenderers:
     - command: delta --dark --paging=never
+customCommands:
+  - key: 'k'
+    context: 'files'
+    description: 'Commit with AI-generated message'
+    prompts:
+      - type: 'input'
+        title: 'Commit message (generated — edit as needed)'
+        key: 'Message'
+        initialValue: "{{ runCommand \"commit-message | head -1\" }}"
+    command: 'git commit -m {{.Form.Message | quote}}'
+    loadingText: 'Asking Claude for a commit message...'
 gui:
   theme:
     activeBorderColor:
