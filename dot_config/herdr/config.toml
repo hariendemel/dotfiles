@@ -3,6 +3,9 @@ onboarding = false
 [theme]
 name = "catppuccin"
 
+[ui]
+prompt_new_tab_name = false
+
 [ui.toast.herdr]
 position = "top-right"
 

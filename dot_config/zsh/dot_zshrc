@@ -46,3 +46,8 @@ source "$ZDOTDIR/git.zsh"
 
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+# --- herdr: automatic-rename plugin shell hook ---
+for _f in ${HOME}/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.zsh(N); do
+  source $_f; break
+done
