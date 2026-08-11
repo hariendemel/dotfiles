@@ -27,3 +27,70 @@ vim.keymap.set("n", "<leader>cha", function()
     end
   end)
 end, { desc = "chezmoi add current file" })
+
+local function github_blob_url(line_start, line_end)
+  local function run(cmd)
+    local res = vim.system(cmd, { text = true }):wait()
+    if res.code ~= 0 then
+      return nil, vim.trim(res.stderr ~= "" and res.stderr or (res.stdout ~= "" and res.stdout or ("command failed: " .. table.concat(cmd, " "))))
+    end
+    return vim.trim(res.stdout)
+  end
+
+  local remote, err = run({ "git", "remote", "get-url", "origin" })
+  if not remote then
+    return nil, err
+  end
+
+  local host, org_repo = remote:match("^git@([^:]+):(.+)$")
+  if not host then
+    host, org_repo = remote:match("^https?://([^/]+)/(.+)$")
+  end
+  if not host or not org_repo then
+    return nil, "unrecognised remote url: " .. remote
+  end
+  org_repo = org_repo:gsub("%.git$", "")
+
+  local sha, sha_err = run({ "git", "rev-parse", "HEAD" })
+  if not sha then
+    return nil, sha_err
+  end
+
+  local toplevel, top_err = run({ "git", "rev-parse", "--show-toplevel" })
+  if not toplevel then
+    return nil, top_err
+  end
+
+  local abs_path = vim.fn.expand("%:p")
+  local rel_path = abs_path:sub(#toplevel + 2)
+
+  local line_frag = ""
+  if line_start then
+    if line_end and line_end ~= line_start then
+      line_frag = string.format("#L%d-L%d", line_start, line_end)
+    else
+      line_frag = string.format("#L%d", line_start)
+    end
+  end
+
+  return string.format("https://%s/%s/blob/%s/%s%s", host, org_repo, sha, rel_path, line_frag)
+end
+
+local function copy_github_url(line_start, line_end)
+  local url, err = github_blob_url(line_start, line_end)
+  if not url then
+    vim.notify(err, vim.log.levels.ERROR)
+    return
+  end
+  vim.fn.setreg("+", url)
+  vim.notify("Copied: " .. url, vim.log.levels.INFO)
+end
+
+vim.keymap.set("n", "<leader>gy", function()
+  copy_github_url(vim.fn.line("."))
+end, { desc = "Copy GitHub URL for current line" })
+
+vim.keymap.set("v", "<leader>gy", function()
+  vim.cmd("normal! \27")
+  copy_github_url(vim.fn.line("'<"), vim.fn.line("'>"))
+end, { desc = "Copy GitHub URL for selection" })
