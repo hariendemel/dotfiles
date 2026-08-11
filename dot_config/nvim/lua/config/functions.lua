@@ -15,6 +15,10 @@ vim.keymap.set("n", "<leader>td", function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
 
+vim.keymap.set("n", "<leader>th", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+end, { desc = "Toggle inlay hints" })
+
 vim.keymap.set("n", "<leader>cha", function()
   vim.cmd(':w')
   local path = vim.fn.expand("%:p")
