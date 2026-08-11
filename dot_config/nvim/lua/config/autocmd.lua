@@ -53,7 +53,9 @@ vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "WinLeave" }, {
         and vim.api.nvim_buf_get_name(0) ~= ""
         and vim.fn.getcmdwintype() == ""
     then
+      vim.b.autosave_in_progress = true
       vim.cmd("silent! update")
+      vim.b.autosave_in_progress = false
     end
   end,
 })
