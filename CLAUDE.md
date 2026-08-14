@@ -46,7 +46,7 @@ Templates are used sparingly — only in `.chezmoiscripts/` to embed a SHA256 of
 
 **Package management (`Brewfile`, `Brewfile.personal`, `Brewfile.work`)** — Declarative Homebrew packages. Applied by `run_onchange_brew-bundle.sh.tmpl`: an always-installed default set, plus a machine-group set (`work`/`personal`) selected by hostname pattern.
 
-**One-off setup commands (`extra-commands.txt`)** — Generic manifest of arbitrary shell commands, one per line (`#`-prefixed and blank lines skipped) — e.g. `gh extension install dlvhdr/gh-dash`. Applied by `run_onchange_extra-commands.sh.tmpl`, which re-runs whenever the manifest changes and tolerates per-line failures (`|| true`), so re-running an already-applied command (e.g. "extension already installed") doesn't break `chezmoi apply`. Use this for anything that doesn't fit Homebrew (gh/npm/pipx installs, etc.); if something needs real per-manager idempotency logic rather than "ignore failure," give it its own `run_once_`/`run_onchange_` script instead.
+**One-off setup commands (`extra-commands`)** — Generic manifest of arbitrary shell commands, one per line (`#`-prefixed and blank lines skipped) — e.g. `gh extension install dlvhdr/gh-dash`. Applied by `run_onchange_extra-commands.sh.tmpl`, which re-runs whenever the manifest changes and tolerates per-line failures (`|| true`), so re-running an already-applied command (e.g. "extension already installed") doesn't break `chezmoi apply`. Use this for anything that doesn't fit Homebrew (gh/npm/pipx installs, etc.); if something needs real per-manager idempotency logic rather than "ignore failure," give it its own `run_once_`/`run_onchange_` script instead.
 
 ## Auto Scripts (`.chezmoiscripts/`)
 
@@ -54,5 +54,5 @@ Execute automatically on `chezmoi apply`:
 - `run_once_setup-dock.sh` — configures the macOS Dock (autohide, trimmed default apps); once per machine
 - `run_once_zsh-zdotdir.sh` — points `ZDOTDIR` at `~/.config/zsh` via `/etc/zshenv`; idempotent, requires sudo, once per machine
 - `run_onchange_brew-bundle.sh.tmpl` — installs Homebrew packages from the Brewfiles; re-runs when any Brewfile changes
-- `run_onchange_extra-commands.sh.tmpl` — replays one-off shell commands from `extra-commands.txt`; re-runs when that file changes
+- `run_onchange_extra-commands.sh.tmpl` — replays one-off shell commands from `extra-commands`; re-runs when that file changes
 - `run_onchange_macos-settings.sh` — macOS system defaults (keyboard repeat, trackpad, autocorrect, dark mode); requires sudo
