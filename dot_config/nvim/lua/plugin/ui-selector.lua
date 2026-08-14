@@ -18,6 +18,11 @@ miniPick.setup()
 vim.keymap.set("n", "<leader>pf", function()
     miniPick.builtin.files()
 end, { desc = "Mini File Picker" })
+vim.keymap.set("n", "<leader>pF", function()
+    miniPick.builtin.cli({
+        command = { "rg", "--files", "--hidden", "--glob", "!.git/*", "--color=never" },
+    })
+end, { desc = "Mini File Picker (including hidden files)" })
 vim.keymap.set("n", "<leader>ps", function()
     miniPick.builtin.grep({ pattern = vim.fn.expand("<cword>") })
 end, { desc = "Grep word/Search word" })
