@@ -1,9 +1,15 @@
 {
   "lastChangelogVersion": "0.84.2",
   "theme": "catppuccin-tui-mocha",
+{{- if eq .chezmoi.hostname "Hariens-Laptop" }}
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-sol",
+  "defaultThinkingLevel": "medium",
+{{- else }}
   "defaultProvider": "opencode-go",
   "defaultModel": "kimi-k2.7-code",
   "defaultThinkingLevel": "low",
+{{- end }}
   "tuiMode": "fullscreen",
   "fullscreenExitOutput": "resume-hint",
   "packages": [
