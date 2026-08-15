@@ -1,0 +1,16 @@
+{
+  "lastChangelogVersion": "0.84.2",
+  "theme": "catppuccin-tui-mocha",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "kimi-k2.7-code",
+  "defaultThinkingLevel": "low",
+  "tuiMode": "fullscreen",
+  "fullscreenExitOutput": "resume-hint",
+  "packages": [
+    "npm:pi-catppuccin-tui",
+    "npm:pi-zentui",
+    "npm:pi-web-access",
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:@juicesharp/rpiv-todo"
+  ]
+}
