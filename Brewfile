@@ -52,3 +52,5 @@ brew "awscli"
 brew "granted"
 brew "tfenv"
 
+# AI
+brew "pi-coding-agent"
