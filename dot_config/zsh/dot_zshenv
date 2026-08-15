@@ -4,18 +4,15 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-# --- custom config ---
-export PI_CODING_AGENT_DIR="$HOME/.config/pi/agent"
-
 # --- default editor used by git, crontab, etc ---
 export EDITOR="nvim"
 export VISUAL="nvim"
 
 # --- pager ---
 if command -v bat >/dev/null 2>&1; then
-  export MANPAGER="bat -l man -p"
+    export MANPAGER="bat -l man -p"
 elif command -v batcat >/dev/null 2>&1; then
-  export MANPAGER="batcat -l man -p"
+    export MANPAGER="batcat -l man -p"
 fi
 
 # raw ANSI colour, no -X: prevents git's default LESS=FRX from leaving
@@ -27,6 +24,5 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # --- Secretive for SSH keys ---
 export SSH_AUTH_SOCK=~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-
 
 alias assume=". assume"
