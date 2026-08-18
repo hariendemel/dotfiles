@@ -5,7 +5,6 @@ vim.pack.add({
     "https://github.com/akinsho/bufferline.nvim",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/nvim-mini/mini.nvim",
-    "https://github.com/ton/vim-bufsurf",
 })
 
 require("catppuccin").setup({
@@ -56,9 +55,6 @@ vim.keymap.set("n", "<leader>bco", "<cmd>BufferLineCloseOthers<CR>", { desc = "C
 vim.keymap.set("n", "<leader>x", function()
     bufRemove.delete(0, false)
 end, { desc = "Close buffer", nowait = true })
-
-vim.keymap.set("n", "<C-Tab>", "<cmd>BufSurfForward<CR>", { desc = "MRU buffer forward" })
-vim.keymap.set("n", "<C-S-Tab>", "<cmd>BufSurfBack<CR>", { desc = "MRU buffer back" })
 
 require("lualine").setup()
 
