@@ -11,7 +11,8 @@ position = "top-right"
 
 [keys]
 new_tab = "prefix+t"
-switch_workspace = "prefix+shift+1..9"
+switch_workspace = "alt+1..9"
+focus_agent = "alt+shift+1..9"
 
 [[keys.command]]
 key = "prefix+/"
