@@ -52,9 +52,10 @@ bufferline.setup({
 vim.keymap.set("n", "<leader>bcl", "<cmd>BufferLineCloseLeft<CR>", { desc = "Close buffers to left" })
 vim.keymap.set("n", "<leader>bcr", "<cmd>BufferLineCloseRight<CR>", { desc = "Close buffers to right" })
 vim.keymap.set("n", "<leader>bco", "<cmd>BufferLineCloseOthers<CR>", { desc = "Close all other buffers" })
-vim.keymap.set("n", "<leader>bc", function()
+
+vim.keymap.set("n", "<leader>x", function()
     bufRemove.delete(0, false)
-end, { desc = "Close buffer" })
+end, { desc = "Close buffer", nowait = true })
 
 vim.keymap.set("n", "<C-Tab>", "<cmd>BufSurfForward<CR>", { desc = "MRU buffer forward" })
 vim.keymap.set("n", "<C-S-Tab>", "<cmd>BufSurfBack<CR>", { desc = "MRU buffer back" })

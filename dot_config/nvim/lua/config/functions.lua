@@ -5,7 +5,7 @@ vim.keymap.set("n", "k", function()
     return vim.v.count == 0 and "gk" or "k"
 end, { expr = true, silent = true, desc = "Up (wrap-aware)" })
 
-vim.keymap.set("n", "<leader>pa", function()
+vim.keymap.set("n", "<leader>yp", function()
     local path = vim.fn.expand("%:p")
     vim.fn.setreg("+", path)
     print("file:", path)
@@ -94,11 +94,11 @@ local function copy_github_url(line_start, line_end)
     vim.notify("Copied: " .. url, vim.log.levels.INFO)
 end
 
-vim.keymap.set("n", "<leader>gy", function()
+vim.keymap.set("n", "<leader>yg", function()
     copy_github_url(vim.fn.line("."))
 end, { desc = "Copy GitHub URL for current line" })
 
-vim.keymap.set("v", "<leader>gy", function()
+vim.keymap.set("v", "<leader>yg", function()
     vim.cmd("normal! \27")
     copy_github_url(vim.fn.line("'<"), vim.fn.line("'>"))
 end, { desc = "Copy GitHub URL for selection" })

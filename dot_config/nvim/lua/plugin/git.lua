@@ -7,7 +7,7 @@ vim.pack.add({
 vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "Show Neogit UI" })
 
 vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<CR>", { desc = "Open diff view" })
-vim.keymap.set("n", "<leader>q", "<cmd>DiffviewClose<CR>", { desc = "Close diff view" })
+vim.keymap.set("n", "<leader>gq", "<cmd>DiffviewClose<CR>", { desc = "Close diff view" })
 vim.keymap.set("n", "<leader>gl", "<cmd>DiffviewFileHistory<CR>", { desc = "Git file history" })
 vim.keymap.set("n", "<leader>glc", "<cmd>DiffviewFileHistory %<CR>", { desc = "Git file history (current file)" })
 
@@ -19,15 +19,15 @@ miniDiff.setup({
     },
 })
 
-vim.keymap.set("n", "<leader>hp", function()
+vim.keymap.set("n", "<leader>hv", function()
     miniDiff.toggle_overlay()
 end, { desc = "Preview diff overlay" })
 
-vim.keymap.set("n", "]h", function()
+vim.keymap.set("n", "hn", function()
     miniDiff.goto_hunk("next")
 end, { desc = "Next git hunk" })
 
-vim.keymap.set("n", "[h", function()
+vim.keymap.set("n", "hp", function()
     miniDiff.goto_hunk("prev")
 end, { desc = "Previous git hunk" })
 
