@@ -29,3 +29,15 @@ command = "exec \"${SHELL:-sh}\""
 description = "open scratch terminal"
 width = "60%"
 height = "60%"
+
+[[keys.command]]
+key = "prefix+<"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.toggle"
+description = "nvim sidebar"
+
+[[keys.command]]
+key = "prefix+,"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.pick-file"
+description = "open file from agent output"

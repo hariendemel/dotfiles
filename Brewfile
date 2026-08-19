@@ -32,6 +32,9 @@ brew "chezmoi"
 brew "dockutil"
 brew "tree-sitter-cli"
 
+# Dev
+brew "rust"
+
 # Terminal
 cask "ghostty"
 cask "kitty"

@@ -13,3 +13,5 @@ require("plugin.git")
 require("plugin.ui-main")
 require("plugin.ui-selector")
 require("plugin.editor")
+
+require("plugin.agent")

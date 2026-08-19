@@ -5,4 +5,6 @@
 
 gh extension install dlvhdr/gh-dash
 gh extension install dlvhdr/gh-enhance
+
 herdr plugin install qu8n/herdr-automatic-rename --yes
+herdr plugin install ChmaraX/herdr-nvim
