@@ -42,7 +42,7 @@ brew "neovim"
 brew "herdr"
 
 # Apps
-cask "firefox"
+cask "zen"
 cask "rectangle"
 cask "zed"
 
