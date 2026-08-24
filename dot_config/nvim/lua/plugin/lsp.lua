@@ -4,6 +4,8 @@ vim.pack.add({
     "https://github.com/nvim-mini/mini.nvim",
     "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
     "https://github.com/stevearc/conform.nvim",
+    "https://github.com/b0o/schemastore.nvim",
+    "https://github.com/mfussenegger/nvim-lint",
 })
 
 require("mason").setup()
@@ -25,6 +27,7 @@ require("mason-tool-installer").setup({
         "shfmt",
         "ruff",
         "prettier",
+        "actionlint",
     },
 })
 
@@ -51,6 +54,20 @@ require("conform").setup({
             return nil
         end
         return { timeout_ms = 500, lsp_format = "fallback" }
+    end,
+})
+
+require("lint").linters_by_ft = {
+    yaml = { "actionlint" },
+}
+
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+    group = vim.api.nvim_create_augroup("UserLintActionlint", { clear = true }),
+    pattern = { "*.yml", "*.yaml" },
+    callback = function(args)
+        if args.file:match("%.github/workflows/") then
+            require("lint").try_lint()
+        end
     end,
 })
 
@@ -100,6 +117,15 @@ vim.lsp.config("lua_ls", {
 
 vim.lsp.config("bashls", {
     filetypes = { "bash", "sh", "zsh" },
+})
+
+vim.lsp.config("yamlls", {
+    settings = {
+        yaml = {
+            schemaStore = { enable = false, url = "" },
+            schemas = require("schemastore").yaml.schemas(),
+        },
+    },
 })
 
 vim.lsp.enable({
