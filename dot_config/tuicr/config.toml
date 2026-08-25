@@ -1,0 +1,8 @@
+theme = "catppuccin-mocha"
+diff_view = "side-by-side"
+ignore_whitespace = false
+appearance = "system"
+mouse = true
+leader = ";"
+comment_vim = true
+relative_line_numbers = true

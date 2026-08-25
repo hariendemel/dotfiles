@@ -35,3 +35,5 @@
     path = ~/.config/git/config-fb
 
 
+[fetch]
+	prune = true

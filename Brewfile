@@ -23,6 +23,8 @@ brew "diffnav"
 brew "lazygit"
 brew "worktrunk"
 brew "gh"
+brew "tuicr"
+brew "gitleaks"
 
 # Utilities
 brew "jq"
