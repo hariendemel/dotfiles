@@ -13,7 +13,7 @@ setopt HIST_FIND_NO_DUPS
 # --- shell ---
 setopt AUTOCD
 setopt NOBEEP
-setopt NUMERIC_GLOB_SORT 
+setopt NUMERIC_GLOB_SORT
 
 # --- smart navigation ---
 LF_ICONS=$(cat ~/.config/lf/icons | tr '\n' ':')
@@ -26,28 +26,28 @@ fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' #lowercase input matches upper and lower
 source <(carapace _carapace zsh)
 
 # --- fuzzy finder ---
 if [[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]]; then
-  source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-  source /opt/homebrew/opt/fzf/shell/completion.zsh
+    source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+    source /opt/homebrew/opt/fzf/shell/completion.zsh
 fi
 
 # --- modular config ---
 for f in $ZDOTDIR/alias/alias*.zsh; do
-  [[ -f $f ]] && source "$f"
+    [[ -f $f ]] && source "$f"
 done
 source "$ZDOTDIR/fzf.zsh"
 source "$ZDOTDIR/plugin.zsh"
 source "$ZDOTDIR/prompt.zsh"
 source "$ZDOTDIR/git.zsh"
 
-
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
 # --- herdr: automatic-rename plugin shell hook ---
 for _f in ${HOME}/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.zsh(N); do
-  source $_f; break
+    source $_f
+    break
 done

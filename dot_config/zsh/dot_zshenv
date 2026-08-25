@@ -19,6 +19,8 @@ fi
 # paged output stuck on screen after quitting less
 export LESS="-R"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # --- personal binaries/scripts ---
 export PATH="$HOME/.local/bin:$PATH"
 
