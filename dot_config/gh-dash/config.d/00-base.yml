@@ -36,14 +36,21 @@ repo:
   prsRefetchIntervalSeconds: 60
 keybindings:
   prs:
-    - key: /
-      name: Review
+    - key: ">"
+      name: WorkTrunk
       command: >-
         herdr pane run 
         $(herdr tab create --label 'PR-{{.PrNumber}}' --cwd "{{.RepoPath}}" --focus | 
         jq -r '.result.root_pane.pane_id')
         "wt switch pr:{{.PrNumber}}"
-    - key: ">"
+    - key: "."
+      name: Review
+      command: >-
+        herdr pane run 
+        $(herdr tab create --label 'Review-{{.PrNumber}}' --cwd "{{.RepoPath}}" --focus | 
+        jq -r '.result.root_pane.pane_id')
+        "tuicr pr https://github.com/{{.RepoName}}/pull/{{.PrNumber}}"
+    - key: "/"
       name: Workflows
       command: >-
         herdr pane run 
