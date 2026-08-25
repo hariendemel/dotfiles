@@ -20,3 +20,5 @@ brew "podman"
 brew "act"
 brew "actionlint"
 
+# JIT
+brew "conductorone/cone/cone"
