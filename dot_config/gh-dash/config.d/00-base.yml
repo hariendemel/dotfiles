@@ -50,6 +50,13 @@ keybindings:
         $(herdr tab create --label 'Review-{{.PrNumber}}' --cwd "{{.RepoPath}}" --focus | 
         jq -r '.result.root_pane.pane_id')
         "tuicr pr https://github.com/{{.RepoName}}/pull/{{.PrNumber}}"
+    - key: ","
+      name: Agent Review
+      command: >-
+        herdr pane run 
+        $(herdr tab create --label 'Review-{{.PrNumber}}' --cwd "{{.RepoPath}}" --focus | 
+        jq -r '.result.root_pane.pane_id')
+        "sniffr https://github.com/{{.RepoName}}/pull/{{.PrNumber}}"
     - key: "/"
       name: Workflows
       command: >-
